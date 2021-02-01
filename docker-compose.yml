@@ -1,0 +1,36 @@
+version: '3.4'
+networks:
+  ntw_database:
+    driver: bridge
+volumes:
+  postgresql_data: 
+services:
+  database:
+    image: postgres:12
+    container_name: dbpolicia
+    ports:
+      - 5432:5432
+    volumes:
+      - postgresql_data:/var/lib/postgresql/data
+      - ./ETAPA_1/database/conf/pg_hba.conf:/var/lib/postgresql/data/pg_hba.conf
+      - ./ETAPA_1/database/conf/postgresql.conf:/var/lib/postgresql/data/postgresql.conf
+    restart: always
+    environment:
+      POSTGRES_USER: pjcmt
+      POSTGRES_PASSWORD: 6tBXh*Eb
+      POSTGRES_DB: dbpolicia
+      PGDATA: /tmp
+    networks:
+      - ntw_database
+  pgadmin:
+    image: dpage/pgadmin4:4
+    container_name: dbadmin
+    ports:
+      - 16543:80
+    networks:
+      - ntw_database
+    depends_on:
+      - database
+    environment:
+      PGADMIN_DEFAULT_EMAIL: geia@pjc.mt.gov.br
+      PGADMIN_DEFAULT_PASSWORD: hXCmfR
