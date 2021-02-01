@@ -1,7 +1,7 @@
 # Teste Prático - Administrador de Dados
 
-Nome: Fernando Prudêncio de Souza
-CPF: 004.209.861-03
+**Nome**: Fernando Prudêncio de Souza  
+**CPF**: 004.209.861-03
 
 ## Ambiente de Desenvolvimento
 
@@ -56,6 +56,12 @@ Opcionalmente:
         * Ex: SELECT current_database() AS nome_banco, version() AS versao_banco
     * Para executar suas consultas no *Query Tool*, pressione F5   
 
+* Acesse o MinIO através da url do host (localhost, ou o IP gerado pelo Docker Toolbox)
+    * Url: localhost:9000 *OU* IP_GERADO_PELO_DOCKER_TOOLBOX:9000 
+    * Utilize os usuário/senha informado no arquivo *docker-compose.yml*
+        * Usuário: minio
+        * Senha: 5ZhUF9Qu
+    * Os buckets criados no passo **6** da etapa **1** estarão disponíveis na barra lateral esquerda, sob o campo de busca.
 
 ## Priorização do Projeto
 
@@ -71,7 +77,7 @@ A criação do ambiente (etapa 1) exige um certo grau de familiaridade com Docke
 
 #### 1º Etapa
 
-- [ ] 1) Montar um ambiente utilizando Docker Compose de modo a levantar containers do PostgreSql 12, do PGAdmin 4 e do MinIO Server utilizando como sistema operacional base  qualquer distribuição Linux.
+- [x] 1) Montar um ambiente utilizando Docker Compose de modo a levantar containers do PostgreSql 12, do PGAdmin 4 e do MinIO Server utilizando como sistema operacional base  qualquer distribuição Linux.
 - [ ] 2) Considere que o SO Linux está na rede 192.168.0.0/24
 - [ ] 3) Nos arquivos de configuração do PostgreSql faça as alterações necessárias de modo a permitir o acesso ao banco de dados por qualquer computador na rede.
 - [ ] 4) Considerando que o sistema operacional de base do servidor PostgreSql seja o Debian 10, executando em um hardware com 32GB de RAM, 8 CPUs, 480GB de Armazenamento SSD,  realize as alterações nos arquivos de configuração do PostgreSql para que trabalhe com a melhor performance e segurança.
@@ -99,7 +105,20 @@ A criação do ambiente (etapa 1) exige um certo grau de familiaridade com Docke
 - [ ] 1) Considerando um alto volume de dados binários produzidos por inúmeros sistemas hoje em dia, em especial no formato PDF natos ou transformados com recursos de OCR, verifica-se a necessidade de se implantar recursos de indexação de conteúdo desses documentos de modo a facilitar as buscas.
 - [ ] 2) Escreva um documento fazendo uma proposta de adoção de alguma solução Open Source para esta finalidade descrevendo os prós e contras, recursos necessários, etapas da implantação e resultados esperados da solução proposta.
 
+## Sobre as Imagens Utilizadas (Docker)
+
+* [dpage/pgadmin4](https://hub.docker.com/_/postgres) - Imagem Oficial do pgAdmin 4.
+* [minio/minio](https://hub.docker.com/r/minio/minio) - Para execução do MinIO Server. Criação de instâncias distribuídas conforme documentação oficial do [MinIO](https://docs.min.io/docs/deploy-minio-on-docker-compose.html).
+    * [nginx](https://hub.docker.com/_/nginx) - Imagem Oficial do Nginx (servidor de HTTP). Utilizado para realização do balanceamento de carga nos servidores distribuídos do MinIO.
+* [postgres](https://hub.docker.com/_/postgres) - Imagem Oficial do PostgreSQL 12.
+
 ## Acesso Rápido
+
+### MinIO Server
+* **Nome Servidor**: nginx
+* **Porta**: 9000
+* **Usuário**: minio
+* **Senha**: 5ZhUF9Qu
 
 ### PGAdmin
 * **Nome Servidor**: dbadmin
