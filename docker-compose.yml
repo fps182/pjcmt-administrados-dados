@@ -28,6 +28,28 @@ services:
       PGDATA: /tmp
     networks:
       - ntw_database
+  database-backup:
+    build:
+      context: ./ETAPA_1/database/backup/scripts
+      dockerfile: ./../Dockerfile
+    container_name: database-backup
+    ports:
+      - 5433:5433
+    depends_on:
+      - database
+    restart: always
+    environment:
+      PGUSER: pjcmt
+      PGPASSWORD: 6tBXh*Eb
+      CRON_SCHEDULE: '0 2 * * *'
+      DELETE_OLDER_THAN: 43200
+      PGDB: dbpolicia
+      PGHOST: dbpolicia
+    volumes:
+      - ./ETAPA_1/database/backup/files:/tmp/bkp
+    command: dump-cron
+    networks:
+      - ntw_database
   pgadmin:
     image: dpage/pgadmin4:4
     container_name: dbadmin

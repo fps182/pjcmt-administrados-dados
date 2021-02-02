@@ -25,6 +25,7 @@ Opcionalmente:
 * Ainda no terminal, execute o comandos:
     * *docker-compose up -d*, para inicializar os containers:
         * dbpolicia (PostgresSQL 12)
+        * database-backup (PostgresSQL 12 - backups)
         * dbadmin (PgAdmin 4)
         * minio1 (MinIO)
         * minio2 (MinIO)
@@ -65,6 +66,7 @@ Opcionalmente:
         * Usuário: minio
         * Senha: 5ZhUF9Qu
     * Os buckets criados no passo **6** da etapa **1** estarão disponíveis na barra lateral esquerda, sob o campo de busca.
+    * Os arquivos espelhados passo **7** da etapa **1** estarão disponíveis no bucket [pgsql-bkp]. Salvo o caso de nenhum backup ter sido realizado. Para testes, a variável [CRON_SCHEDULE] do container [database-backup] pode ser alterada para ['* * * * *'], realizando assim um backup por minuto.
 
 ## Priorização do Projeto
 
@@ -84,7 +86,7 @@ A criação do ambiente (etapa 1) exige um certo grau de familiaridade com Docke
 - [x] 2) Considere que o SO Linux está na rede 192.168.0.0/24
 - [x] 3) Nos arquivos de configuração do PostgreSql faça as alterações necessárias de modo a permitir o acesso ao banco de dados por qualquer computador na rede.
 - [x] 4) Considerando que o sistema operacional de base do servidor PostgreSql seja o Debian 10, executando em um hardware com 32GB de RAM, 8 CPUs, 480GB de Armazenamento SSD,  realize as alterações nos arquivos de configuração do PostgreSql para que trabalhe com a melhor performance e segurança.
-- [ ] 5) Considerando que você tenha um banco de dados criado no servidor PostgreSql com o nome “dbPolicia” escreva um script que realize o dump do banco de dados usando o formato “Format Custom” do PostgreSQL todos os dias às 2h para o diretório /tmp/bkp.
+- [x] 5) Considerando que você tenha um banco de dados criado no servidor PostgreSql com o nome “dbPolicia” escreva um script que realize o dump do banco de dados usando o formato “Format Custom” do PostgreSQL todos os dias às 2h para o diretório /tmp/bkp.
 - [ ] 6) Utilizando o MinIO Client (mc) conecte no MinIO Server e crie um bucket pgsql-bkp;
 - [ ] 7) Espelhe continuamente o diretório /tmp/bkp com os dump’s do item 5 para o MinIO;
 - [ ] 8) Use as ferramentas e soluções que achar necessário.
@@ -114,6 +116,7 @@ A criação do ambiente (etapa 1) exige um certo grau de familiaridade com Docke
 * [minio/minio](https://hub.docker.com/r/minio/minio) - Para execução do MinIO Server. Criação de instâncias distribuídas conforme documentação oficial do [MinIO](https://docs.min.io/docs/deploy-minio-on-docker-compose.html).
     * [nginx](https://hub.docker.com/_/nginx) - Imagem Oficial do Nginx (servidor de HTTP). Utilizado para realização do balanceamento de carga nos servidores distribuídos do MinIO.
 * [postgres](https://hub.docker.com/_/postgres) - Imagem Oficial do PostgreSQL 12.
+* [postgres - backup](https://hub.docker.com/_/postgres) - Baseado na imagem [annixa/pg_dump](https://hub.docker.com/r/annixa/docker-pg_dump) para realização de backups, com pequenas adequações para atender aos requisitos da avaliação.
 
 ## Acesso Rápido
 
