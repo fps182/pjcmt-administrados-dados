@@ -78,8 +78,8 @@ A criação do ambiente (etapa 1) exige um certo grau de familiaridade com Docke
 #### 1º Etapa
 
 - [x] 1) Montar um ambiente utilizando Docker Compose de modo a levantar containers do PostgreSql 12, do PGAdmin 4 e do MinIO Server utilizando como sistema operacional base  qualquer distribuição Linux.
-- [ ] 2) Considere que o SO Linux está na rede 192.168.0.0/24
-- [ ] 3) Nos arquivos de configuração do PostgreSql faça as alterações necessárias de modo a permitir o acesso ao banco de dados por qualquer computador na rede.
+- [x] 2) Considere que o SO Linux está na rede 192.168.0.0/24
+- [x] 3) Nos arquivos de configuração do PostgreSql faça as alterações necessárias de modo a permitir o acesso ao banco de dados por qualquer computador na rede.
 - [ ] 4) Considerando que o sistema operacional de base do servidor PostgreSql seja o Debian 10, executando em um hardware com 32GB de RAM, 8 CPUs, 480GB de Armazenamento SSD,  realize as alterações nos arquivos de configuração do PostgreSql para que trabalhe com a melhor performance e segurança.
 - [ ] 5) Considerando que você tenha um banco de dados criado no servidor PostgreSql com o nome “dbPolicia” escreva um script que realize o dump do banco de dados usando o formato “Format Custom” do PostgreSQL todos os dias às 2h para o diretório /tmp/bkp.
 - [ ] 6) Utilizando o MinIO Client (mc) conecte no MinIO Server e crie um bucket pgsql-bkp;
