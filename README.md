@@ -27,11 +27,13 @@ Opcionalmente:
         * dbpolicia (PostgresSQL 12)
         * database-backup (PostgresSQL 12 - backups)
         * dbadmin (PgAdmin 4)
+        * flyway (Flyway 5.2.4)
         * minio1 (MinIO)
         * minio2 (MinIO)
         * nginx (Nginx 1.19.12)
     * *docker-compose ps*, para listar os containers e seu status atual 
         * Uma vez que o status seja *UP*, os container estão prontos para uso
+            * Com exceção do Flyway, que irá apresentar o status *Exit 0*, uma vez que as migrações sejam finalizadas
 
 ### Validando a Estrutura
 
@@ -53,7 +55,7 @@ Opcionalmente:
         * Clique em *Save*
     * A conexão estará disponível na barra lateral esquerda, sob a opção *Serves*
     * Navegue pela estrutura *Servers* até o banco *dbpolicia*
-        * Servers > NOME_ESCOLHIDO_PARA_CONEXAO > Databases > dbpolicia
+        * Servers > NOME_ESCOLHIDO_PARA_CONEXAO > Databases > dbpolicia (ou conveniencia)
     * Acesse a ferramenta *Query Tool*
         * Acesse o menu *Tools > Query Tool*
     * Utilize o schema *public* para validar as informações do servidor de Banco de Dados
@@ -93,7 +95,7 @@ A criação do ambiente (etapa 1) exige um certo grau de familiaridade com Docke
 
 #### 2º Etapa
 
-- [ ] 1) Construa um script SQL (projeto físico) para criar e popular um banco de dados que deverá ser nominado de conveniencia;
+- [x] 1) Construa um script SQL (projeto físico) para criar e popular um banco de dados que deverá ser nominado de conveniencia;
 - [ ] 2) Construa um script que faça a inserção de pelo menos 3 registros em cada tabela;
 - [ ] 3) A tabela venda necessita de algum recurso de segurança e auditoria. Crie um tabela venda_auditoria e para cada operação de insert, update ou delete na tabela venda  haja a inserção de cópia dos registros na tabela vendas_auditoria. Para isso será necessário criar uma trigger para a tabela venda;
 - [ ] 4) Crie uma view materializada que liste os cliente e os estilos de cerveja que costuma comprar (exibir nome do cliente e nome do estilo);
@@ -112,6 +114,7 @@ A criação do ambiente (etapa 1) exige um certo grau de familiaridade com Docke
 
 ## Sobre as Imagens Utilizadas (Docker)
 
+* [boxfuse/flyway](https://hub.docker.com/r/boxfuse/flyway/) - Imagem Oficial do Flyway 5.2.4. A versão utilizada causa uma pequena divergência do projeto lógico apresentado: A partir da versão 5, a tabela de controle [schema_history] passa a ser nomeada [flyway_schema_history].
 * [dpage/pgadmin4](https://hub.docker.com/_/postgres) - Imagem Oficial do pgAdmin 4.
 * [minio/mc](https://hub.docker.com/r/minio/mc/) - Para a execução do MinIO Client. Crição de buckets e monitoramento de pastas.
 * [minio/minio](https://hub.docker.com/r/minio/minio) - Para execução do MinIO Server. Criação de instâncias distribuídas conforme documentação oficial do [MinIO](https://docs.min.io/docs/deploy-minio-on-docker-compose.html).

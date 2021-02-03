@@ -1,0 +1,1 @@
+CREATE DATABASE conveniencia ENCODING 'UTF8';

@@ -20,6 +20,7 @@ services:
       - postgresql_data:/var/lib/postgresql/data
       - ./ETAPA_1/database/conf/pg_hba.conf:/var/lib/postgresql/data/pg_hba.conf
       - ./ETAPA_1/database/conf/postgresql.conf:/var/lib/postgresql/data/postgresql.conf
+      - ./ETAPA_2/database/scripts/init.sql:/docker-entrypoint-initdb.d/init.sql
     restart: always
     environment:
       POSTGRES_USER: pjcmt
@@ -62,6 +63,17 @@ services:
     environment:
       PGADMIN_DEFAULT_EMAIL: geia@pjc.mt.gov.br
       PGADMIN_DEFAULT_PASSWORD: hXCmfR
+  flyway:
+    image: boxfuse/flyway:5.2.4
+    container_name: flyway
+    command: -url=jdbc:postgresql://dbpolicia:5432/conveniencia -user=pjcmt -password=6tBXh*Eb -connectRetries=60 migrate
+    volumes:
+      - ./ETAPA_2/database/scripts/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./ETAPA_2/database/scripts:/flyway/sql
+    networks:
+      - ntw_database
+    depends_on:
+      - database
   minio1:
     image: minio/minio:RELEASE.2021-01-08T21-18-21Z
     container_name: minio1
