@@ -43,7 +43,7 @@ CREATE SEQUENCE cidade_codigo_seq;
 
 CREATE TABLE cidade (
                 codigo BIGINT NOT NULL DEFAULT nextval('cidade_codigo_seq'),
-                Nome VARCHAR(50) NOT NULL,
+                nome VARCHAR(50) NOT NULL,
                 codigo_estado BIGINT NOT NULL,
                 CONSTRAINT cidade_pk PRIMARY KEY (codigo)
 );
@@ -56,7 +56,7 @@ CREATE SEQUENCE cliente_codigo_seq;
 CREATE TABLE cliente (
                 codigo BIGINT NOT NULL DEFAULT nextval('cliente_codigo_seq'),
                 nome VARCHAR(80) NOT NULL,
-                tipo_pessoa VARCHAR(15) NOT NULL,
+                tipo_pessoa VARCHAR(15) NOT NULL CHECK (tipo_pessoa = 'FISICA' OR tipo_pessoa = 'JURIDICA' OR tipo_pessoa = 'AMBOS'),
                 cpf_cnpj VARCHAR(30) NOT NULL,
                 telefone VARCHAR(20),
                 email VARCHAR(50),
@@ -101,7 +101,7 @@ CREATE TABLE venda (
                 valor_frete DECIMAL(10,2),
                 valor_desconto DECIMAL(10,2),
                 valor_total DECIMAL(10,2) NOT NULL,
-                status VARCHAR(30) DEFAULT 'EMABERTO' NOT NULL,
+                status VARCHAR(30) DEFAULT 'EMABERTO' NOT NULL CHECK (status = 'EMABERTO' OR status = 'NOTAEMITIDA' OR status = 'EMSEPARACAO' OR status = 'CANCELADA' OR status = 'DEVOLVIDA' OR status = 'FECHADA'),
                 observacao VARCHAR(200),
                 data_hora_entrega TIMESTAMP,
                 codigo_cliente BIGINT NOT NULL,
