@@ -87,9 +87,9 @@ A criação do ambiente (etapa 1) exige um certo grau de familiaridade com Docke
 - [x] 3) Nos arquivos de configuração do PostgreSql faça as alterações necessárias de modo a permitir o acesso ao banco de dados por qualquer computador na rede.
 - [x] 4) Considerando que o sistema operacional de base do servidor PostgreSql seja o Debian 10, executando em um hardware com 32GB de RAM, 8 CPUs, 480GB de Armazenamento SSD,  realize as alterações nos arquivos de configuração do PostgreSql para que trabalhe com a melhor performance e segurança.
 - [x] 5) Considerando que você tenha um banco de dados criado no servidor PostgreSql com o nome “dbPolicia” escreva um script que realize o dump do banco de dados usando o formato “Format Custom” do PostgreSQL todos os dias às 2h para o diretório /tmp/bkp.
-- [ ] 6) Utilizando o MinIO Client (mc) conecte no MinIO Server e crie um bucket pgsql-bkp;
-- [ ] 7) Espelhe continuamente o diretório /tmp/bkp com os dump’s do item 5 para o MinIO;
-- [ ] 8) Use as ferramentas e soluções que achar necessário.
+- [x] 6) Utilizando o MinIO Client (mc) conecte no MinIO Server e crie um bucket pgsql-bkp;
+- [x] 7) Espelhe continuamente o diretório /tmp/bkp com os dump’s do item 5 para o MinIO;
+- [x] 8) Use as ferramentas e soluções que achar necessário.
 
 #### 2º Etapa
 
@@ -113,6 +113,7 @@ A criação do ambiente (etapa 1) exige um certo grau de familiaridade com Docke
 ## Sobre as Imagens Utilizadas (Docker)
 
 * [dpage/pgadmin4](https://hub.docker.com/_/postgres) - Imagem Oficial do pgAdmin 4.
+* [minio/mc](https://hub.docker.com/r/minio/mc/) - Para a execução do MinIO Client. Crição de buckets e monitoramento de pastas.
 * [minio/minio](https://hub.docker.com/r/minio/minio) - Para execução do MinIO Server. Criação de instâncias distribuídas conforme documentação oficial do [MinIO](https://docs.min.io/docs/deploy-minio-on-docker-compose.html).
     * [nginx](https://hub.docker.com/_/nginx) - Imagem Oficial do Nginx (servidor de HTTP). Utilizado para realização do balanceamento de carga nos servidores distribuídos do MinIO.
 * [postgres](https://hub.docker.com/_/postgres) - Imagem Oficial do PostgreSQL 12.
