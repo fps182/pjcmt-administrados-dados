@@ -99,7 +99,7 @@ A criação do ambiente (etapa 1) exige um certo grau de familiaridade com Docke
 - [x] 2) Construa um script que faça a inserção de pelo menos 3 registros em cada tabela;
 - [x] 3) A tabela venda necessita de algum recurso de segurança e auditoria. Crie um tabela venda_auditoria e para cada operação de insert, update ou delete na tabela venda  haja a inserção de cópia dos registros na tabela vendas_auditoria. Para isso será necessário criar uma trigger para a tabela venda;
 - [x] 4) Crie uma view materializada que liste os cliente e os estilos de cerveja que costuma comprar (exibir nome do cliente e nome do estilo);
-- [ ] 5) Considerando que este banco de dados contém centenas de milhares de registros, escreva um script criando os índices necessários para melhorar a performance de eventuais consultas;
+- [x] 5) Considerando que este banco de dados contém centenas de milhares de registros, escreva um script criando os índices necessários para melhorar a performance de eventuais consultas;
 - [ ] 6) Crie um usuário usr_relatorio para o banco de dados conveniência;
 - [ ] 7) Revogar toda e qualquer permissão relativa ao usr_relatorio;
 - [ ] 8) Conceder permissão o usr_relatorio conectar-se no banco de dados conveniencia e realizar a leitura somente da view criada no item 4 e da tabela de auditoria criada  no item 3;
