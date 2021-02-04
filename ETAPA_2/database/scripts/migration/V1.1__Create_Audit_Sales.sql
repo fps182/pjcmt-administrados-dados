@@ -12,7 +12,7 @@ CREATE TABLE venda_auditoria (
                 aud_data_operacao TIMESTAMP DEFAULT now() NOT NULL,
                 aud_tipo_operacao VARCHAR(1) NOT NULL CHECK (aud_tipo_operacao = 'C' OR aud_tipo_operacao = 'U' OR aud_tipo_operacao = 'D'),
                 aud_usuario_banco VARCHAR(65) NOT NULL,
-                aud_ip VARCHAR(15),
+                aud_ip VARCHAR(30),
                 aud_host VARCHAR(100),
                 aud_aplicacao_nome VARCHAR(250)
 
