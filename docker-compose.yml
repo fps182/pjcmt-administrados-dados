@@ -149,3 +149,19 @@ services:
       - ntw_minio
     depends_on:
       - nginx
+  papermerge:
+    image: ghcr.io/linuxserver/papermerge:version-v1.5.5
+    container_name: papermerge
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Cuiaba
+    volumes:
+      - ./ETAPA_3/ged/conf:/config
+    ports:
+      - 8000:8000
+    restart: unless-stopped
+    networks:
+      - ntw_database
+    depends_on:
+      - database

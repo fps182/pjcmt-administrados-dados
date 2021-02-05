@@ -109,13 +109,14 @@ A criação do ambiente (etapa 1) exige um certo grau de familiaridade com Docke
 
 #### 3º Etapa
 
-- [ ] 1) Considerando um alto volume de dados binários produzidos por inúmeros sistemas hoje em dia, em especial no formato PDF natos ou transformados com recursos de OCR, verifica-se a necessidade de se implantar recursos de indexação de conteúdo desses documentos de modo a facilitar as buscas.
-- [ ] 2) Escreva um documento fazendo uma proposta de adoção de alguma solução Open Source para esta finalidade descrevendo os prós e contras, recursos necessários, etapas da implantação e resultados esperados da solução proposta.
+- [x] 1) Considerando um alto volume de dados binários produzidos por inúmeros sistemas hoje em dia, em especial no formato PDF natos ou transformados com recursos de OCR, verifica-se a necessidade de se implantar recursos de indexação de conteúdo desses documentos de modo a facilitar as buscas.
+- [x] 2) Escreva um documento fazendo uma proposta de adoção de alguma solução Open Source para esta finalidade descrevendo os prós e contras, recursos necessários, etapas da implantação e resultados esperados da solução proposta.
 
 ## Sobre as Imagens Utilizadas (Docker)
 
 * [boxfuse/flyway](https://hub.docker.com/r/boxfuse/flyway/) - Imagem Oficial do Flyway 5.2.4. A versão utilizada causa uma pequena divergência do projeto lógico apresentado: A partir da versão 5, a tabela de controle [schema_history] passa a ser nomeada [flyway_schema_history].
 * [dpage/pgadmin4](https://hub.docker.com/_/postgres) - Imagem Oficial do pgAdmin 4.
+* [linuxserver/papermerge](https://hub.docker.com/r/linuxserver/papermerge) - Imagem homologada do Papermerge.
 * [minio/mc](https://hub.docker.com/r/minio/mc/) - Para a execução do MinIO Client. Crição de buckets e monitoramento de pastas.
 * [minio/minio](https://hub.docker.com/r/minio/minio) - Para execução do MinIO Server. Criação de instâncias distribuídas conforme documentação oficial do [MinIO](https://docs.min.io/docs/deploy-minio-on-docker-compose.html).
     * [nginx](https://hub.docker.com/_/nginx) - Imagem Oficial do Nginx (servidor de HTTP). Utilizado para realização do balanceamento de carga nos servidores distribuídos do MinIO.
@@ -141,3 +142,9 @@ A criação do ambiente (etapa 1) exige um certo grau de familiaridade com Docke
 * **Porta**: 5432
 * **Usuário**: pjcmt
 * **Senha**: 6tBXh*Eb
+
+### PaperMerge
+* **Nome Servidor**: papermerge
+* **Porta**: 8000
+* **Usuário**: admin
+* **Senha**: admin
