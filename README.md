@@ -103,9 +103,9 @@ A criação do ambiente (etapa 1) exige um certo grau de familiaridade com Docke
 - [x] 6) Crie um usuário usr_relatorio para o banco de dados conveniência;
 - [x] 7) Revogar toda e qualquer permissão relativa ao usr_relatorio;
 - [x] 8) Conceder permissão o usr_relatorio conectar-se no banco de dados conveniencia e realizar a leitura somente da view criada no item 4 e da tabela de auditoria criada  no item 3;
-- [ ] 9) Escreva uma sentença SQL que exiba uma lista das cervejas vendidas ordenadas primeiramente pela quantidade de vendas. É imprescindível que nesta lista apareça as cervejas que não tiveram vendas realizadas com o numeral zero;
-- [ ] 10) Escreva uma sentença SQL que exiba uma lista da quantidade de vendas realizadas pelos usuários por mês no corrente ano (Retornar nome do usuário, ano da venda, mês  da venda, quantidade vendida);
-- [ ] 11) Escreva uma sentença SQL que exiba quanto de comissão em valores recebeu o primeiro usuário cadastrado em sua base de dados (normalmente com id 1) em razão das  vendas que realizou.
+- [x] 9) Escreva uma sentença SQL que exiba uma lista das cervejas vendidas ordenadas primeiramente pela quantidade de vendas. É imprescindível que nesta lista apareça as cervejas que não tiveram vendas realizadas com o numeral zero;
+- [x] 10) Escreva uma sentença SQL que exiba uma lista da quantidade de vendas realizadas pelos usuários por mês no corrente ano (Retornar nome do usuário, ano da venda, mês  da venda, quantidade vendida);
+- [x] 11) Escreva uma sentença SQL que exiba quanto de comissão em valores recebeu o primeiro usuário cadastrado em sua base de dados (normalmente com id 1) em razão das  vendas que realizou.
 
 #### 3º Etapa
 
